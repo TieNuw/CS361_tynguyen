@@ -1,0 +1,70 @@
+.help-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  cursor: help;
+}
+
+.help-icon::before {
+  content: "?";
+  line-height: 20px;
+}
+
+/* Tooltip */
+.help-icon[title] {
+  position: relative;
+}
+
+.help-icon[title]::after {
+  content: attr(title);
+  position: absolute;
+  left: 30px; /* Adjust the position as needed */
+  top: -10px; /* Adjust the position as needed */
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.help-icon[title]:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.progress-bar {
+  width: 300px;
+  height: 20px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #55a630;
+  width: 0%;
+  transition: width 0.3s ease-in-out;
+}
+
+.circle {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ccc;
+  text-align: center;
+  line-height: 30px;
+  margin-left: 10px;
+}
+
+.circle-number {
+  font-weight: bold;
+}
