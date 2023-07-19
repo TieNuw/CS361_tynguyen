@@ -1,0 +1,237 @@
+<!--Adapted from CS340 Course Module 7 - Developing in Node.JS
+The implemented JavaScript Code may resemble the source code, as it was used as a template.
+but a majority of the implemented code is all catered to a new project
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<html>
+<head>
+<title>Calorie Tracker</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+                document.getElementById('displayFormsLink').style.display = 'none';
+                document.getElementById('hideFormsLink').style.display = 'none';
+                document.getElementById('searchMeal').style.display = 'none';
+                document.getElementById('addMealButton').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+                document.getElementById('displayFormsLink').style.display = 'none';
+                document.getElementById('hideFormsLink').style.display = 'none';
+                document.getElementById('searchMeal').style.display = 'none';
+                document.getElementById('addMealButton').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+                document.getElementById('displayFormsLink').style.display = 'none';
+                document.getElementById('hideFormsLink').style.display = 'none';
+                document.getElementById('searchMeal').style.display = 'none';
+                document.getElementById('addMealButton').style.display = 'none';
+			}
+            else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+                document.getElementById('displayFormsLink').style.display = 'none';
+                document.getElementById('hideFormsLink').style.display = 'block';
+                document.getElementById('searchMeal').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+                document.getElementById('displayFormsLink').style.display = 'block';
+                document.getElementById('hideFormsLink').style.display = 'none';
+                document.getElementById('searchMeal').style.display = 'block';
+                document.getElementById('addMealButton').style.display = 'block';
+			}
+		}
+    function newMeal() { showform('insert'); }
+    function updateMeal(pid) { showform('update'); }
+    function deleteMeal(pid) { showform ('delete'); }
+    function browseMeal() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browseMeal()">
+    <h1>Calorie Tracker</h1>
+
+    [ <a href="CalorieTracker.html">Tracker</a> | <a href="PersonInfo.html">My Info</a> ]
+
+<p></p>
+<form id="searchMeal" method='GET'>
+    <label for="searchMeal">Search by Date: </label>
+        <input type="date" name="searchMeal" id="searchMeals">
+        <input type="submit">
+        <span class="help-icon" title="Use the search feature to specify which day you are looking for. To enter a new meal, you can press the Add meal button at the bottom."></span>
+</form>
+
+<div id="browse">
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Meal Number</th>
+            <th>Food Item</th>
+            <th>Quantity</th>
+            <th>Units</th>
+            <th>Calories</th>
+            <th>Date</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        <tr>
+            <td align="right" >1</td>
+            <td>Apple</td>
+            <td align="right" >2</td>
+            <td align="right" >serving(s)</td>
+            <td align="right" >120</td>
+            <td align="right">7/17/23</td>
+            <td><a href="#" onClick="deleteMeal('this.mealID')">Delete</a></td>
+            <td><a href="#" onClick="updateMeal('this.mealID')">Update</a></td>
+        </tr>
+        <tr>
+            <td align="right" >2</td>
+            <td>Ham Sandwich</td>
+            <td align="right" >1</td>
+            <td align="right" >serving(s)</td>
+            <td align="right" >400</td>
+            <td align="right">7/17/23</td>
+            <td><a href="#" onClick="deleteMeal('this.mealID')">Delete</a></td>
+            <td><a href="#" onClick="updateMeal('this.mealID')">Update</a></td>
+        </tr>
+        <tr>
+            <td align="right" >3</td>
+            <td>Watermelon</td>
+            <td align="right" >200</td>
+            <td align="right" >gram(s)</td>
+            <td align="right" >60</td>
+            <td align="right">7/17/23</td>
+            <td><a href="#" onClick="deleteMeal('this.mealID')">Delete</a></td>
+            <td><a href="#" onClick="updateMeal('this.mealID')">Update</a></td>
+        </tr>
+        <tr>
+            <td align="right" >4</td>
+            <td>Chicken noodle soup</td>
+            <td align="right" >2</td>
+            <td align="right" >cup(s)</td>
+            <td align="right" >174</td>
+            <td align="right">7/17/23</td>
+            <td><a href="#" onClick="deleteMeal('this.mealID')">Delete</a></td>
+            <td><a href="#" onClick="updateMeal('this.mealID')">Update</a></td>
+        </tr>
+    </table>
+
+</div> <!-- browse -->
+
+<div id="addMealButton">
+    <p><button onClick="newMeal()">Add Meal</button></p>
+</div>
+
+<div class="progress-bar">
+    <div class="progress" id="progress">Current Calories </div>
+</div>
+
+<script src="script.js"></script>
+
+<div id="displayFormsLink">
+    <p><button onClick="showAll()">Display All Forms</button></p>
+    <span class="help-icon" title="Click to display all the forms. If you would like to change the calorie progress bar click on my info and enter your information!"></span>
+</div>
+<div id="hideFormsLink">
+    <p><button onClick="browseMeal()">Hide Forms</button></p>
+    <span class="help-icon" title="click to close all of the forms. If you would like to change the calorie progress bar click on my info and enter your information!"></span>
+</div>
+
+<div id="insert">
+    <form method="POST" id="addMeal" style="display: flex">
+        <legend><strong>Add Meal</strong></legend>
+          <fieldset class="fields">
+            <label for="foodItem">Food Item</label> <input style="display: block" type="text" name="foodItem" id="foodItem">
+            <label for="quantity">Quantity</label> <input style="display: block" type="number" name="quantity" id="quantity">
+            <label for="units">Unit of measure:</label>
+            <select style="display: block" name="units">
+                <option value="0">---SELECT---</option>
+                <option value="gram(s)">gram(s)</option>
+                <option value="oz(s)">oz(s)</option>
+                <option value="cup(s)">cup(s)</option>
+                <option value="lb(s)">lb(s)</option>
+            </select>
+            <label for="calorie">Calories</label> <input style="display: block" type="number" name="calorie" id="calorie">
+            <label>Date</label> <input style="display: block" type="date" name="date">
+            <br>
+            <input class="btn" type="submit" id="addMeals" value="Add Meal">
+            <input class="btn" type="button" value="Cancel" onClick="browseMeal()">
+          </fieldset>
+	</form>
+</div><!-- insert -->
+<p>&nbsp;</p>
+
+<div id="update">
+    <form method="POST" id="updateMeal" style="display: flex">
+        <legend><strong>Update Meal</strong></legend>
+          <fieldset class="fields">
+            <label for="selectMeal">Select Meal:</label>
+            <select style="display: block" name="selectMeal">
+                <option value="0">---SELECT---</option>
+                <option value="1">Meal 1</option>
+                <option value="2">Meal 2</option>
+                <option value="3">Meal 3</option>
+                <option value="4">Meal 3</option>
+            </select>
+            <label for="foodItem">Food Item</label> <input style="display: block" type="text" name="foodItem" id="foodItem">
+            <label for="quantity">Quantity</label> <input style="display: block" type="number" name="quantity" id="quantity">
+            <label for="units">Unit of measure:</label>
+            <select style="display: block" name="units">
+                <option value="0">---SELECT---</option>
+                <option value="gram(s)">gram(s)</option>
+                <option value="oz(s)">oz(s)</option>
+                <option value="cup(s)">cup(s)</option>
+                <option value="lb(s)">lb(s)</option>
+            </select>
+            <label for="calorie">Calories</label> <input style="display: block" type="number" name="calorie" id="calorie">
+            <label>Date</label> <input style="display: block" type="date" name="date">
+            <br>
+            <input class="btn" type="submit" id="UpdateMeals" value="Save Update">
+            <input class="btn" type="button" value="Cancel" onClick="browseMeal()">
+          </fieldset>
+	</form>
+</div><!-- update -->
+<p>&nbsp;</p>
+
+<div id="delete" style="display: block">
+    <form method="POST" id="deleteMeal">
+        <legend><strong>Delete Meal</strong></legend>
+        <fieldset class="fields">
+        <label for="selectMeal">Select Meal:</label>
+            <select style="display: block" name="selectMeal">
+                <option value="0">---SELECT---</option>
+                <option value="1">Meal 1</option>
+                <option value="2">Meal 2</option>
+                <option value="3">Meal 3</option>
+                <option value="4">Meal 3</option>
+            </select>
+      </fieldset>
+      <input class="btn" type="submit" id="deleteMeals" value="Delete Meal">
+      <input class="btn" type="button" value="Cancel" onClick="browseMeal()">
+    </form>
+  </div><!-- delete -->
+
+  </body>
+  </html>
