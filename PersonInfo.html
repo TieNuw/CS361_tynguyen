@@ -1,0 +1,83 @@
+<!--Adapted from CS340 Course Module 7 - Developing in Node.JS
+The implemented JavaScript Code may resemble the source code, as it was used as a template.
+but a majority of the implemented code is all catered to a new project
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Personnel Info</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>Myself</h1>
+
+    [ <a href="CalorieTracker.html">Tracker</a> | <a href="PersonInfo.html">My Info</a> ]
+    <p>&nbsp;</p>
+
+    <span class="help-icon" title="Here you can input information about yourself to calculate your BMR"></span>
+
+    <div id="insertPI">
+    <form method="POST" id="addInfo" style="display: flex">
+
+          <fieldset class="fields">
+            <label for="name">Name</label> <input style="display: block" type="text" name="name" id="name">
+            <label for="gender">gender</label> <input style="display: block" type="text" name="gender" id="gender">
+            <label for="height">height</label> <input style="display: block" type="number" name="height" id="height">
+            <label for="age">age</label> <input style="display: block" type="number" name="age" id="age">
+            <label for="weight">weight</label> <input style="display: block" type="number" name="weight" id="weight">
+            <label for="activity">Activity level:</label>
+            <select style="display: block" name="activity">
+                <option value="0">---SELECT---</option>
+                <option value="1">no activity</option>
+                <option value="2">1-2 days per week</option>
+                <option value="3">3-4 days per week</option>
+                <option value="4">5+ days per week</option>
+            </select>
+            <label for="calorie">Calories Goal</label> <input style="display: block" type="number" name="calorie" id="calorie">
+
+            <br>
+            <input class="btn" type="submit" id="addInfos" value="Add Info">
+          </fieldset>
+	</form>
+    </div><!-- insert -->
+    <p>&nbsp;</p>
+
+    <div id="browse">
+         <table border="1" cellpadding="5">
+             <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Height(cm)</th>
+                <th>Age</th>
+                <th>Weight(kg)</th>
+                <th>Activity Level</th>
+                <th>Calorie Goal</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+
+            <tr>
+            <td>Fake Name</td>
+            <td align="right" >male</td>
+            <td align="right" >182</td>
+            <td align="right" >111</td>
+            <td align="right" >99</td>
+            <td>3-4 days per week</td>
+            <td align="right">2000</td>
+            <td><a href="#" onClick="deleteMeal('this.mealID')">Delete</a></td>
+            <td><a href="#" onClick="updateMeal('this.mealID')">Update</a></td>
+            </tr>
+         </table>
+    </div>
+    <p>&nbsp;</p>
+
+    <!-- Circle with Number -->
+    <div class="circle">
+        <span class="circle-number">BMR</span>
+        <span class="help-icon" title="This is your daily calorie intake for you to maintain your weight. If you would like to lose weight, have your calorie goal lower. If you would like to gain weight, have your calorie goal higher."></span>
+        <p>2100</p>
+    </div>
+
+</body>
+</html>
